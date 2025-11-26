@@ -3,6 +3,8 @@ const prisma = new PrismaClient()
 
 const bcrypt = require("bcryptjs")
 
+const jwt = require("jsonwebtoken")
+
 const authService = {
 
     async register(data){
@@ -17,8 +19,25 @@ const authService = {
         return usuario
     },
 
-    login(){
-
+    
+    async login(data){
+        const {email, password} = data
+        const usuario = await prisma.usuario.findUnique({ where: { email }})
+        if (!usuario){
+            return null
+        }
+        else{
+            const valido = await bcrypt.compare(password, usuario.password)
+            if (!valido){
+                return null
+            }
+            const token = jwt.sign(
+                { id: usuario.id, email: usuario.email },
+                "JWT_SECRET",
+                { expiresIn: "2h"}
+            )
+            return {usuario, token}
+        }
     },
 
     logout(){
