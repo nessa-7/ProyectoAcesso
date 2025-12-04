@@ -5,6 +5,7 @@ const verificarToken = require("../middleware/authMiddleware")
 
 router.post('/register', authController.register)
 router.post('/login', authController.login)
+router.get('/prueba', authController.prueba)
 
 router.get('/perfil', verificarToken, async (req , res) => {
     res.json({

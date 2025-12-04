@@ -18,6 +18,10 @@ const authController = {
                 usuario: result.usuario
             })
         }
+    },
+
+    async prueba(req, res){
+        return res.json({mensaje: "Prueba exitosa"})
     }
 }
 
