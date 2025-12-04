@@ -12,10 +12,7 @@ const AuthMiddleware = {
 
     const respuesta =  jwt.verify(token, "JWT_SECRET")
         req.user = respuesta //Guarda los datos del usuario
-
-        next() //si falla un endpoint pasa al siguiente 
-
-    
+        next() //si falla un endpoint pasa al siguiente  
     }
 
 }

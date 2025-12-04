@@ -47,3 +47,29 @@ const authService = {
 }
 
 module.exports = authService
+
+/*
+
+async login(data){
+        const {email, password} = data
+        const usuario = await prisma.usuario.findUnique({ where: { email }})
+        
+            const valido = await bcrypt.compare(password, usuario.password)
+            if (!valido){
+                return {mensaje: "Credenciales incorrectas"}
+            }
+            else{
+            const token = jwt.sign(
+                { 
+                    id: usuario.id, 
+                    email: usuario.email 
+                },
+                "JWT_SECRET",
+                { 
+                    expiresIn: "1d "
+                }
+            )
+            return {usuario, token}
+        }
+
+        */
