@@ -4,7 +4,8 @@ import { useAuth } from "./context/AuthContext";
 function Prueba() {
 
     const {token} = useAuth();
-    
+    const {nombre} = useAuth();
+
     useEffect(() => {
         traer()
     }, [])
@@ -21,7 +22,8 @@ function Prueba() {
     }
     return (
         <div>
-            <h1>Componente de Prueba</h1>
+            <h1>Prueba</h1>
+            <h2>El usuario es: {nombre}</h2>
         </div>
     )
 }

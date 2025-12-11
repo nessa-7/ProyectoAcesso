@@ -10,6 +10,7 @@ function Login(){
     const [password, setPassword] = useState('');  
 
     const {guardarToken} = useAuth();
+    const {guardarNombre} = useAuth();  
     
     async function guardar(e){
         e.preventDefault();
@@ -22,9 +23,12 @@ function Login(){
             body: JSON.stringify({ email, password})
         })
         const data = await respuesta.json();
-        console.log(data);
+        console.log(data)
 
         guardarToken(data.token);
+        guardarNombre(data.usuario.nombre);
+
+        console.log(data.usuario.nombre);
 
         navigate('/prueba');
     }

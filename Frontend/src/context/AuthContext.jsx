@@ -8,13 +8,18 @@ const AuthContext = createContext();
 export const AuthPro = ({children})=>{
 
     const [token, setToken] = useState(null);
+    const [nombre, setNombre] = useState("");
 
     const guardarToken=(tk /*recibir token login*/)=>{
         setToken(tk)
     }
 
+    const guardarNombre=(name)=>{
+        setNombre(name)
+    }
+
     return(
-        <AuthContext.Provider value={{token,guardarToken}}>
+        <AuthContext.Provider value={{token,guardarToken, nombre, guardarNombre}}>
             {children}
         </AuthContext.Provider>
     )

@@ -3,17 +3,17 @@ import './App.css'
 
 import Register from './Register.jsx';
 import Login from './Login.jsx';
-import Navbar from './Navbar.jsx';
 import Prueba from './Prueba.jsx';
 
 import {AuthPro, useAuth } from "./context/AuthContext";
+import Navegacion from './Navbar.jsx';
 
 function App() {
   return (
       <div>
         <AuthPro>
           <BrowserRouter>
-          <Navbar></Navbar>
+          <Navegacion></Navegacion>
           <Routes>
             <Route path='/' element={<Register></Register>} />
             <Route path='/login' element={ <Login></Login>} />
